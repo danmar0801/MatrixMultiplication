@@ -1,5 +1,6 @@
 public class ClassicalMatrixMultipication {
     public static int[][] multiply(int[][] matrixA, int[][] matrixB) {
+        System.out.println("Preforming Classical OPS");
         int rowsA = matrixA.length;
         int colsA = matrixA[0].length;
         int rowsB = matrixB.length;

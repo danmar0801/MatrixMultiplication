@@ -1,6 +1,7 @@
 public class StrassenMatrixOps {
 
     public static int[][] multiply(int[][] A, int[][] B) {
+        System.out.println("Preforming StrassenMatrixOPS");
         int n = A.length;
         int m = nextPowerOfTwo(n);
 

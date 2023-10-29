@@ -1,13 +1,18 @@
 public class Matrix {
     private int[][] data;
+    private int size;
     private int rows;
     private int cols;
 
     // Constructor
-    public Matrix(int rows, int cols) {
-        this.rows = rows;
-        this.cols = cols;
-        this.data = new int[rows][cols];
+    public Matrix(int size) {
+        if ((size & (size - 1)) != 0 || size <= 0) {
+            throw new IllegalArgumentException("Matrix size must be a positive power of 2.");
+        }
+        this.size = size;
+        this.rows = size;
+        this.cols = size;
+        this.data = new int[size][size];
     }
 
     // Set values for the entire matrix
