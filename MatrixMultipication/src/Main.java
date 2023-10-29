@@ -1,29 +1,32 @@
 public class Main {
     public static void main(String[] args) {
-        int[][] matrixA = {
+        int[][] matrixDataA = {
                 {3, 7, 11},
                 {1, 2, 3},
                 {5, 14, 9}
         };
 
-        int[][] matrixB = {
+        int[][] matrixDataB = {
                 {13, 4, 4},
                 {9, 69, 7},
                 {1, 7, 22}
         };
+        // init the matrix, C will hold the result of multiplying A and B
+        Matrix matrixA = new Matrix(3, 3);
+        Matrix matrixB = new Matrix(3, 3);
+        Matrix matrixC = new Matrix(3, 3);
 
-        int[][] result;
+        // Set values for the entire matrix
+        matrixA.setValues(matrixDataA);
+        matrixB.setValues(matrixDataB);
+
+
 
         try {
-            result = ClassicalMatrixMultipication.multiply(matrixA, matrixB);
+            matrixC.setValues(ClassicalMatrixMultipication.multiply(matrixA.getValues(), matrixB.getValues()));
 
             // Print the result
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
-                    System.out.print(result[i][j] + " ");
-                }
-                System.out.println();
-            }
+            matrixC.printMatrix();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
