@@ -12,16 +12,22 @@ public class MatrixTestSimulator {
         this.matrixB = matrixB;
         this.matrixC = matrixC;
         this.algoName = algoName;
+    }
+
+    public void runSimulation(){
         for (int i = 0; i < 10; i++) {
             long startTime = System.nanoTime();
             switch (algoName) {
                 case "Classical":
+                    System.out.println("Preforming ClassicalMatrixOPS");
                     matrixC.setValues(ClassicalMatrixMultipication.multiply(matrixA.getValues(), matrixB.getValues()));
                     break;
                 case "DivideAndConquer":
+                    System.out.println("Preforming DivideAndConquerMatrixOPS");
                     matrixC.setValues(DivideAndConquerMatrixOps.multiply(matrixA.getValues(), matrixB.getValues()));
                     break;
                 case "Strassen":
+                    System.out.println("Preforming StrassenMatrixOPS");
                     matrixC.setValues(StrassenMatrixOps.multiply(matrixA.getValues(), matrixB.getValues()));
                     break;
             }
@@ -37,12 +43,9 @@ public class MatrixTestSimulator {
         }
 
         average = sum / 8;
-
-    }
-
-    public long runSimulation(){
         System.out.println(algoName + " average time: " + average + " nanoseconds");
-        return average;
+        System.out.println(algoName + " average time: " + average / 1_000_000_000.0 + " seconds");
+        System.out.println("----------------------------------");
 
     }
 }

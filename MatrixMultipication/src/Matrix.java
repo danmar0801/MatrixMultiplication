@@ -1,6 +1,5 @@
 public class Matrix {
     private int[][] data;
-    private int size;
     private int rows;
     private int cols;
 
@@ -9,7 +8,6 @@ public class Matrix {
         if ((size & (size - 1)) != 0 || size <= 0) {
             throw new IllegalArgumentException("Matrix size must be a positive power of 2.");
         }
-        this.size = size;
         this.rows = size;
         this.cols = size;
         this.data = new int[size][size];

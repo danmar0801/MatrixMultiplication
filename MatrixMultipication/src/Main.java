@@ -1,39 +1,36 @@
 public class Main {
     public static void main(String[] args) {
-        int matrixSize = 2;
-        // init the matrix, C will hold the result of multiplying A and B
-        Matrix matrixA = new Matrix(matrixSize);
-        Matrix matrixB = new Matrix(matrixSize);
-        Matrix matrixC = new Matrix(matrixSize);
+        for (int k = 1; k <= 10; k++) {
+            int matrixSize = (int) Math.pow(2, k);
+            System.out.println("Testing for matrix size: " + matrixSize);
+            System.out.println("Testing for K values: " + k);
 
-        // Set values for the entire matrix
-        matrixA.setValues(new MatrixGenerator(matrixSize).getMatrix());
-        matrixB.setValues(new MatrixGenerator(matrixSize).getMatrix());
+            // Generate matrices
+            int[][] valuesA = new MatrixGenerator(matrixSize).getMatrix();
+            int[][] valuesB = new MatrixGenerator(matrixSize).getMatrix();
 
+            // Create Matrix objects
+            Matrix matrixA = new Matrix(matrixSize);
+            Matrix matrixB = new Matrix(matrixSize);
+            Matrix matrixC = new Matrix(matrixSize);
 
-        matrixA.printMatrix();
-        matrixB.printMatrix();
+            // Set Matrix values
+            matrixA.setValues(valuesA);
 
-
-
-        try {
-            // to preform multiplication using the Classical Matrix Multiplication algorithm
-            matrixC.setValues(ClassicalMatrixMultipication.multiply(matrixA.getValues(), matrixB.getValues()));
-            matrixC.printMatrix();
-            System.out.println("\n");
-            // to preform multiplication using the Divide and Conquer Matrix Multiplication algorithm
-            System.out.println("Preforming D&C OPS");
-            matrixC.setValues(DivideAndConquerMatrixOps.multiply(matrixA.getValues(), matrixB.getValues()));
-            matrixC.printMatrix();
-            System.out.println("\n");
-            // to preform multiplication using the Strassen's Matrix Multiplication algorithm
-            matrixC.setValues(StrassenMatrixOps.multiply(matrixA.getValues(), matrixB.getValues()));
+            matrixA.printMatrix();
+            matrixB.setValues(valuesB);
+            matrixB.printMatrix();
 
 
-            // Print the result
-            matrixC.printMatrix();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+
+            // Run tests
+            new MatrixTestSimulator("Classical", matrixA, matrixB, matrixC).runSimulation();
+            new MatrixTestSimulator("DivideAndConquer", matrixA, matrixB, matrixC).runSimulation();
+            new MatrixTestSimulator("Strassen", matrixA, matrixB, matrixC).runSimulation();
+
+            System.out.println("----------------------------------");
         }
+
     }
+
 }

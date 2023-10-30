@@ -1,8 +1,5 @@
 public class DivideAndConquerMatrixOps {
 
-
-
-
     public static int[][] multiply(int[][] A, int[][] B) {
 
         int n = A.length;
