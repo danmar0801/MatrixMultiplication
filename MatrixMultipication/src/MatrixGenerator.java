@@ -1,8 +1,13 @@
 import java.util.Random;
 
+// this class is desgined to create a random matrix of size kxk which is provided when the class is called
 public class MatrixGenerator {
     int[][] matrix;
+    // bounds to set the limits of random numbers generated
+    int upperBound = 100;
+    int lowerBound = 0;
     private Random random = new Random();
+    //constructor to generate the random values of the matrix based on the size
     public MatrixGenerator(int k) {
         this.matrix = new int[k][k];
 
