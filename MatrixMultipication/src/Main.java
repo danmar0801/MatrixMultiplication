@@ -16,10 +16,7 @@ public class Main {
 
             // Set Matrix values
             matrixA.setValues(valuesA);
-
-            matrixA.printMatrix();
             matrixB.setValues(valuesB);
-            matrixB.printMatrix();
 
 
 
